@@ -1,0 +1,23 @@
+{
+  "joinButtonText": "Csatlakozás",
+  "createButtonText": "Szoba létrehozása",
+  "findRoomButtonText": "Keresés",
+  "yourNameTextFieldHint": "pl. Gábor",
+  "roomIdTextFieldHint": "pl. 12345",
+  "yourNameTextFieldLabelText": "Neved",
+  "roomIdTextFieldLabelText": "Szoba azonosító",
+  "roomNameTextFieldHint": "Gábor szobája",
+  "roomNameTextFieldLabelText": "Szoba neve",
+  "areYouSureText": "Biztos vagy benne?",
+  "doYouReallyWantToQuitText": "Biztosan ki szeretnél lépni?",
+  "doYorReallyWantToCloseThisRoomText": "Biztosan be szeretnéd zárni a szobát?",
+  "yesText": "Igen",
+  "noText": "Nem",
+  "dontLetEmptyError": "Ne hagyd üresen ezt a mezőt!",
+  "startText": "Indítás",
+  "quitText": "Kilépés",
+  "somethingWrong": "Valami nem sikerült!",
+  "adminClosedTheRoom": "A tulajdonos bezárta a szobát!",
+  "backToTheMenu": "Vissza a menübe",
+  "adminKickedYou": "A tulajdonos kirúgott téged a szobából!"
+}

@@ -1,0 +1,76 @@
+{
+  "joinButtonText": "Join",
+  "@joinButtonText": {
+    "context": "HomePage"
+  },
+  "createButtonText": "Create room",
+  "@createButtonText": {
+    "context": "HomePage"
+  },
+  "findRoomButtonText": "Find room",
+  "@findRoomButtonText": {
+    "context": "JoinPage"
+  },
+  "yourNameTextFieldLabelText": "Your name",
+  "@yourNameTextFieldLabelText": {
+    "context": "JoinPage/CreateRoomPage"
+  },
+  "roomIdTextFieldLabelText": "Room ID",
+  "@roomIdTextFieldLabelText": {
+    "context": "JoinPage"
+  },
+  "yourNameTextFieldHint": "e.g. Adam H.",
+  "@yourNameTextFieldHint": {
+    "context": "JoinPage/CreateRoomPage"
+  },
+  "roomIdTextFieldHint": "e.g. 12345",
+  "@roomIdTextFieldHint": {
+    "context": "JoinPage"
+  },
+  "roomNameTextFieldHint": "e.g. Adam's room",
+  "@roomNameTextFieldHint": {
+    "context": "CreateRoomPage"
+  },
+  "roomNameTextFieldLabelText": "Room name",
+  "@roomNameTextFieldLabelText": {
+    "context": "CreateRoomPage"
+  },
+  "areYouSureText": "Are you sure?",
+  "@areYouSureText": {
+    "context": "RoomPage/LobbyPage"
+  },
+  "doYouReallyWantToQuitText": "Do you really want to quit?",
+  "@doYouReallyWantToQuitText": {
+    "context": "RoomPage"
+  },
+  "doYorReallyWantToCloseThisRoomText": "Do you really want to close this room?",
+  "@doYorReallyWantToCloseThisRoomText": {
+    "context": "RoomPage/LobbyPage"
+  },
+  "yesText": "Yes",
+  "@yesText": {
+    "context": "LobbyPage/RoomPage"
+  },
+  "noText": "No",
+  "@noText": {
+    "context": "LobbyPage/RoomPage"
+  },
+  "reactionButtonHint": "Press to react to this topic",
+  "@reactionButtonHint": {
+    "context": "RoomLobby"
+  },
+  "topicButtonHint": "Press to start now topic",
+  "@topicButtonHint": {
+    "context": "RoomLobby"
+  },
+  "dontLetEmptyError": "Don't let this field empty!",
+  "@dontLetEmptyError": {
+    "context": "CreateRoomPage/JoinRoomPage"
+  },
+  "startText": "Start",
+  "quitText": "Quit",
+  "somethingWrong": "Something went wrong!",
+  "adminClosedTheRoom": "The admin closed the room!",
+  "backToTheMenu": "Back to the menu",
+  "adminKickedYou": "The admin kicked you out from the room!"
+}
