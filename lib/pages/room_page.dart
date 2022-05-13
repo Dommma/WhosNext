@@ -59,7 +59,18 @@ class RoomPage extends StatelessWidget {
                               .doc(currentRoomId)
                               .delete();
                         } else {
-                          //TODO: remove active messages
+                          if (isActiveReaction) {
+                            docRef
+                                .collection("reactions")
+                                .doc("R-" + myUserId!)
+                                .delete();
+                          }
+                          if (isActiveTopic) {
+                            docRef
+                                .collection("topics")
+                                .doc("T-" + myUserId!)
+                                .delete().then((value) => isActiveTopic = false);
+                          }
                         }
                         Navigator.pop(context, true);
                       }),
@@ -120,10 +131,14 @@ class RoomPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     FloatingActionButton(
+                      tooltip: l10n.reactionButtonHint,
                       backgroundColor: Colors.red.shade700,
                         child: Text(
                           "!",
-                          style: TextStyle(fontSize: 40.0),
+                          style: TextStyle(fontSize: 40.0, color: Theme.of(context).scaffoldBackgroundColor),
+                        ),
+                        shape: CircleBorder(
+                            side: BorderSide(color: Theme.of(context).scaffoldBackgroundColor)
                         ),
                         onPressed: () {
                           if (isActiveReaction) {
@@ -148,10 +163,14 @@ class RoomPage extends StatelessWidget {
                       height: 20.0,
                     ),
                     FloatingActionButton(
+                      tooltip: l10n.topicButtonHint,
                       backgroundColor: Colors.orange.shade800,
                         child: Text(
                           "+",
-                          style: TextStyle(fontSize: 50.0),
+                          style: TextStyle(fontSize: 50.0, color: Theme.of(context).scaffoldBackgroundColor),
+                        ),
+                        shape: CircleBorder(
+                          side: BorderSide(color: Theme.of(context).scaffoldBackgroundColor)
                         ),
                         onPressed: () {
                           if (isActiveTopic) {
