@@ -71,8 +71,9 @@ class LobbyPage extends StatelessWidget {
             if(notFirstRefresh) {
 
               if(room.isStarted!) {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RoomPage(myUserId: myUserId, myUserName: myUserName, currentRoomId: currentRoomId,)));
-              }
+                WidgetsBinding.instance?.addPostFrameCallback((_) =>
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RoomPage(myUserId: myUserId, myUserName: myUserName, currentRoomId: currentRoomId,)))
+          );}
 
               if(!room.users!.containsKey(myUserId)) {
                 return AlertDialog(
@@ -128,7 +129,7 @@ class LobbyPage extends StatelessWidget {
               },
               child: Scaffold(
                 appBar: AppBar(
-                  title: Text(room.roomName!),
+                  title: Text(room.roomName!+": "+currentRoomId!),
                 ),
                 body: Column(
                   children: [
@@ -185,7 +186,8 @@ class LobbyPage extends StatelessWidget {
     else {
       return ElevatedButton(
         onPressed: () {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RoomPage(myUserId: myUserId, myUserName: myUserName, currentRoomId: currentRoomId,)));
+          FirebaseFirestore.instance.collection("rooms").doc(currentRoomId).update({"isStarted":true});
+          //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RoomPage(myUserId: myUserId, myUserName: myUserName, currentRoomId: currentRoomId,)));
         },
         child: Text(l10n.startText),
         style: ElevatedButton.styleFrom(

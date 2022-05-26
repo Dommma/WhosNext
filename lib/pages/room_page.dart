@@ -2,8 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import "package:flutter_gen/gen_l10n/l10n.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_glow/flutter_glow.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled/models/topic_message_model.dart';
+import 'package:provider/provider.dart';
 
+import '../network/room_notifier.dart';
 import '../widgets/message_item.dart';
 
 class RoomPage extends StatelessWidget {
@@ -127,71 +131,48 @@ class RoomPage extends StatelessWidget {
                     height: 6.0,
                   ),
                 ]),
-                floatingActionButton: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    FloatingActionButton(
-                      tooltip: l10n.reactionButtonHint,
-                      backgroundColor: Colors.red.shade700,
-                        child: Text(
-                          "!",
-                          style: TextStyle(fontSize: 40.0, color: Theme.of(context).scaffoldBackgroundColor),
-                        ),
-                        shape: CircleBorder(
-                            side: BorderSide(color: Theme.of(context).scaffoldBackgroundColor)
-                        ),
-                        onPressed: () {
-                          if (isActiveReaction) {
-                            docRef
-                                .collection("reactions")
-                                .doc("R-" + myUserId!)
-                                .delete().then((value) => isActiveReaction=false);
-                          } else {
-                            var newTopic = TopicMessage(
-                                senderId: myUserId,
-                                senderName: myUserName,
-                                timeStamp:
-                                    DateTime.now().millisecondsSinceEpoch,
-                            type: "reaction");
-                            docRef
-                                .collection("reactions")
-                                .doc("R-" + myUserId!)
-                                .set(newTopic.toJson()).then((value) => isActiveReaction=true);
-                          }
-                        }),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    FloatingActionButton(
-                      tooltip: l10n.topicButtonHint,
-                      backgroundColor: Colors.orange.shade800,
-                        child: Text(
-                          "+",
-                          style: TextStyle(fontSize: 50.0, color: Theme.of(context).scaffoldBackgroundColor),
-                        ),
-                        shape: CircleBorder(
-                          side: BorderSide(color: Theme.of(context).scaffoldBackgroundColor)
-                        ),
-                        onPressed: () {
-                          if (isActiveTopic) {
-                            docRef
-                                .collection("topics")
-                                .doc("T-" + myUserId!)
-                                .delete().then((value) => isActiveTopic = false);
-                          } else {
-                            docRef
-                                .collection("topics")
-                                .doc("T-" + myUserId!)
-                                .set({
-                              "timestamp":
-                                  DateTime.now().millisecondsSinceEpoch,
-                              "senderName": myUserName,
-                              "senderId": myUserId,
-                              "type": "topic"
-                            }).then((value) => isActiveTopic = true);
-                          }
-                        })
-                  ],
+                floatingActionButton: ChangeNotifierProvider(
+                  create: (_) => RoomNotifier(currentRoomId!, myUserId!, myUserName!),
+                  child: Consumer<RoomNotifier>(
+                    builder: (context, value, child) {
+                      Color topicBorderAndTextColor = value.isTopicActive ? Colors.orange.shade800 : Theme.of(context).scaffoldBackgroundColor;
+                      Color topicBackgroundColor = value.isTopicActive ? Theme.of(context).scaffoldBackgroundColor : Colors.orange.shade800;
+                      Color reactionBorderAndTextColor = value.isReactionActive ? Colors.red.shade700 : Theme.of(context).scaffoldBackgroundColor;
+                      Color reactionBackgroundColor = value.isReactionActive ? Theme.of(context).scaffoldBackgroundColor : Colors.red.shade700;
+                      isActiveReaction = value.isReactionActive;
+                      isActiveTopic = value.isTopicActive;
+                      return Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      FloatingActionButton(
+                          tooltip: l10n.reactionButtonHint,
+                          backgroundColor: reactionBackgroundColor,
+                          child: Text(
+                            "!",
+                            style: TextStyle(fontSize: 40.0, color: reactionBorderAndTextColor, fontWeight: FontWeight.bold),
+                          ),
+                          shape: CircleBorder(
+                              side: BorderSide(color: reactionBorderAndTextColor, width: 2.0)
+                          ),
+                          onPressed: () {value.reactionPressed();}),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      FloatingActionButton(
+                          tooltip: l10n.topicButtonHint,
+                          backgroundColor: topicBackgroundColor,
+                          child: Text(
+                            "+",
+                            style: TextStyle(fontSize: 50.0, color: topicBorderAndTextColor),
+                          ),
+                          shape: CircleBorder(
+                              side: BorderSide(color: topicBorderAndTextColor, width: 2.0)
+                          ),
+                          onPressed: () {value.topicPressed();})
+                    ],
+                  );
+                    },
+                  ),
                 ),
               );
             }

@@ -126,21 +126,21 @@ packages:
       name: cloud_firestore
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.14"
+    version: "3.1.15"
   cloud_firestore_platform_interface:
     dependency: transitive
     description:
       name: cloud_firestore_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.5.5"
+    version: "5.5.6"
   cloud_firestore_web:
     dependency: transitive
     description:
       name: cloud_firestore_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.6.14"
+    version: "2.6.15"
   code_builder:
     dependency: transitive
     description:
@@ -203,21 +203,21 @@ packages:
       name: firebase_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.16.0"
+    version: "1.17.0"
   firebase_core_platform_interface:
     dependency: transitive
     description:
       name: firebase_core_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.3.0"
+    version: "4.4.0"
   firebase_core_web:
     dependency: transitive
     description:
       name: firebase_core_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.3"
+    version: "1.6.4"
   fixnum:
     dependency: transitive
     description:
@@ -230,6 +230,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_glow:
+    dependency: "direct main"
+    description:
+      name: flutter_glow
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -364,13 +371,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
-  multiple_stream_builder:
-    dependency: "direct main"
-    description:
-      name: multiple_stream_builder
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.1"
   nested:
     dependency: transitive
     description:
@@ -427,13 +427,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-  quiver:
-    dependency: transitive
-    description:
-      name: quiver
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.5"
   shelf:
     dependency: transitive
     description:
@@ -523,13 +516,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  tuple:
-    dependency: "direct main"
-    description:
-      name: tuple
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.3"
   typed_data:
     dependency: transitive
     description:
@@ -574,4 +560,4 @@ packages:
     version: "3.1.1"
 sdks:
   dart: ">=2.16.0 <3.0.0"
-  flutter: ">=1.17.0"
+  flutter: ">=1.16.0"
